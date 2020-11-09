@@ -42,18 +42,17 @@ public class ArticleEditServlet extends HttpServlet {
                 return;
             }
             String content = a.getContent();
+            content = content.replace("\n", "&shy;");
             System.out.println(content);
-            Pattern p = Pattern.compile("(<p class=\"article-p\">(.*)</p>)|(<img class=\"article-img\" src=\"(.*)\">)", Pattern.DOTALL);
+            Pattern p = Pattern.compile("(<p class=\"article-p\">([^<>]*)</p>)|(<img class=\"article-img\" src=\"([^<>]*)\">)", Pattern.DOTALL);
             Matcher m = p.matcher(content);
             List<String> list = new ArrayList<>();
             while (m.find()){
                 if(m.group(2) != null){
-                    System.out.println("text:" + m.group(2));
-                    list.add("text:" + m.group(2));
+                    list.add("text:" + articleService.replaceHtmlReverse(m.group(2)));
                 }
                 if(m.group(4) != null){
-                    System.out.println("img:" + m.group(4));
-                    list.add("img:" + m.group(4));
+                    list.add("img:" + articleService.replaceHtmlReverse(m.group(4)));
                 }
             }
             req.setAttribute("list", list);
@@ -94,7 +93,12 @@ public class ArticleEditServlet extends HttpServlet {
                 .author((Profile)req.getSession().getAttribute("user"))
                 .build();
         if(req.getParameter("id") != null){
-            if(a.getAuthor().getId() != ((Profile)req.getSession().getAttribute("user")).getId()){
+            Article b = articleService.getArticleById(null, Long.parseLong(req.getParameter("id")), CommentsOrder.OLD);
+            if(b == null){
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+                return;
+            }
+            if(b.getAuthor().getId() != ((Profile)req.getSession().getAttribute("user")).getId()){
                 resp.sendError(HttpServletResponse.SC_FORBIDDEN);
                 return;
             }

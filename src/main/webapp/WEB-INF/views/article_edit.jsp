@@ -45,8 +45,10 @@
                                 "            </div>")
                             addCloseListener(partsCount)
                             addPartsButtonListeners(partsCount)
+                            value = "${fn:substring(part, 5, part.length())}"
+                            value = value.replaceAll("&shy;", "\n")
+                            $('.editor-div[data-number=' + partsCount + '] .editor-text-area-div').val(value)
                             $('.editor-text-area-div').autosize()
-                            $('.editor-div[data-number=' + partsCount + '] .editor-text-area-div').val("${fn:substring(part, 5, part.length())}")
                             partsCount++
 
                         </script>
@@ -69,7 +71,9 @@
                             addCloseListener(partsCount)
                             addFileViewListener(partsCount)
                             addPartsButtonListeners(partsCount)
-                            $('.editor-div[data-number=' + partsCount + '] .image-appender').html("<img class=\"image-preview\" src=\"${fn:substring(part, 4, part.length())}\">")
+                            value = "${fn:substring(part, 4, part.length())}"
+                            value = value.replaceAll("&shy;", "\n")
+                            $('.editor-div[data-number=' + partsCount + '] .image-appender').html("<img class=\"image-preview\" src=\"" + value + "\">")
                             partsCount++
                         </script>
                     </c:if>

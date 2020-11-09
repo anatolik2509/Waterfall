@@ -512,3 +512,8 @@ body{
     margin: 5px;
 }
 
+.article-p{
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+

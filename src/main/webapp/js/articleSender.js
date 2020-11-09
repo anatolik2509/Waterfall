@@ -31,9 +31,7 @@ function addSenderListener(id) {
                 }
                 else {
                     let preview = partsList[i].getElementsByClassName('image-preview')
-                    console.log(preview)
                     if(preview.length > 0) {
-                        console.log(preview[0].getAttribute("src"))
                         let src = preview[0].getAttribute("src")
                         response['part-' + i] = src.substring(src.indexOf('=') + 1)
                         response['type-' + i] = "img"
