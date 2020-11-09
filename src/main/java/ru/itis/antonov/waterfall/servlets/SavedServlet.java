@@ -41,13 +41,13 @@ public class SavedServlet extends HttpServlet {
                     resp.addCookie(new Cookie("lastArticle", "0"));
                 }
             }
-            context.getRequestDispatcher("/WEB-INF/views/user_articles.jsp").forward(req, resp);
+            context.getRequestDispatcher("/WEB-INF/views/saved.jsp").forward(req, resp);
         }
         else {
             int begin = Integer.parseInt(req.getParameter("begin"));
             int end = Integer.parseInt(req.getParameter("end"));
             Timestamp updated = new Timestamp(Long.parseLong(req.getParameter("updated")));
-            List<Article> l = articleService.getUserArticle((Profile)req.getSession().getAttribute("user"),
+            List<Article> l = articleService.getSavedArticle((Profile)req.getSession().getAttribute("user"),
                     begin, end, updated);
             req.setAttribute("articleList", l);
             context.getRequestDispatcher("/WEB-INF/views/article_list.jsp").forward(req, resp);

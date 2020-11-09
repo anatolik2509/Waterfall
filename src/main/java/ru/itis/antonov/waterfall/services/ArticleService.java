@@ -59,4 +59,6 @@ public interface ArticleService {
     void createComment(Comment c);
 
     List<Article> getUserArticle(Profile p, int begin, int end, Timestamp updated);
+
+    List<Article> getSavedArticle(Profile p, int begin, int end, Timestamp updated);
 }

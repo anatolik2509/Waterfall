@@ -246,4 +246,19 @@ public class ArticleServiceJdbcImpl implements ArticleService {
         }
         return articles;
     }
+
+    @Override
+    public List<Article> getSavedArticle(Profile p, int begin, int end, Timestamp updated) {
+        List<Article> articles = articleRepository.savedArticles(p, begin, end, updated);
+        for (Article a : articles) {
+            if (a.getGroup().getId() != -1) {
+                a.setGroup(groupRepository.getWithName(a.getGroup().getId()));
+            }
+            a.setAuthor(profileRepository.getWithName(a.getAuthor().getId()));
+            a.setCommentAmount(countComments(a.getComments()));
+            a.setUserRate(isRated(a, p));
+            a.setSaved(isSaved(a, p));
+        }
+        return articles;
+    }
 }
