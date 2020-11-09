@@ -222,9 +222,9 @@ public class ArticleServiceJdbcImpl implements ArticleService {
     @Override
     public String replaceHtmlReverse(String raw) {
         String result;
-        result = raw.replace("&gt", ">");
-        result = result.replace("&lt", "<");
-        result = result.replace("&amp", "&");
+        result = raw.replace("&gt;", ">");
+        result = result.replace("&lt;", "<");
+        result = result.replace("&amp;", "&");
         return result;
     }
 
