@@ -43,7 +43,6 @@ public class ArticleEditServlet extends HttpServlet {
             }
             String content = a.getContent();
             content = content.replace("\n", "&shy;");
-            System.out.println(content);
             Pattern p = Pattern.compile("(<p class=\"article-p\">([^<>]*)</p>)|(<img class=\"article-img\" src=\"([^<>]*)\">)", Pattern.DOTALL);
             Matcher m = p.matcher(content);
             List<String> list = new ArrayList<>();

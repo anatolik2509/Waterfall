@@ -45,7 +45,7 @@
                                 "            </div>")
                             addCloseListener(partsCount)
                             addPartsButtonListeners(partsCount)
-                            value = "${fn:substring(part, 5, part.length())}"
+                            value = `${fn:substring(part, 5, part.length())}`
                             value = value.replaceAll("&shy;", "\n")
                             $('.editor-div[data-number=' + partsCount + '] .editor-text-area-div').val(value)
                             $('.editor-text-area-div').autosize()

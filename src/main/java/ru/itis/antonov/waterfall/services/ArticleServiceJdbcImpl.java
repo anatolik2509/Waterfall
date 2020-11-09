@@ -225,6 +225,7 @@ public class ArticleServiceJdbcImpl implements ArticleService {
         result = raw.replace("&gt;", ">");
         result = result.replace("&lt;", "<");
         result = result.replace("&amp;", "&");
+        result = result.replace("/", "\\/");
         return result;
     }
 
