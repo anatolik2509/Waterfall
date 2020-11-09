@@ -1,0 +1,2 @@
+INSERT INTO public.profile (id, nickname, password_hash, email) VALUES (5, 'aaa', '$2a$10$jJYr9Zn2bQqJb6UHHLCYIugE17iptNCogRWLGyx56bYn29d5pEOE2', 'aaa@aa.aa');
+INSERT INTO public.profile (id, nickname, password_hash, email) VALUES (6, 'bbb', '$2a$10$tcUkxzYX4vDu0j8oCtZQ7OfcrGVfYENWohPl7J6hhtoEXeyhMHjzy', 'aaaa@aa.aa');
