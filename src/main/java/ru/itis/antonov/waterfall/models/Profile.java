@@ -9,6 +9,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @Builder
+@AllArgsConstructor
 public class Profile {
     private long id;
     private String nickname;
