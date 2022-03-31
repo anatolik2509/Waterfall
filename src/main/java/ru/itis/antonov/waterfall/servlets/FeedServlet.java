@@ -32,17 +32,19 @@ public class FeedServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(req.getParameter("begin") == null){
-            for (Cookie c : req.getCookies()){
-                if(c.getName().equals("savedOffset")){
-                    req.setAttribute("savedOffset", c.getValue());
-                    resp.addCookie(new Cookie("savedOffset", "0"));
-                }
-                if(c.getName().equals("lastArticle")){
-                    req.setAttribute("lastArticle", c.getValue());
-                    resp.addCookie(new Cookie("lastArticle", "0"));
-                }
-                if(c.getName().equals("feedType")){
-                    req.setAttribute("feedType", c.getValue());
+            if (req.getCookies() != null) {
+                for (Cookie c : req.getCookies()) {
+                    if (c.getName().equals("savedOffset")) {
+                        req.setAttribute("savedOffset", c.getValue());
+                        resp.addCookie(new Cookie("savedOffset", "0"));
+                    }
+                    if (c.getName().equals("lastArticle")) {
+                        req.setAttribute("lastArticle", c.getValue());
+                        resp.addCookie(new Cookie("lastArticle", "0"));
+                    }
+                    if (c.getName().equals("feedType")) {
+                        req.setAttribute("feedType", c.getValue());
+                    }
                 }
             }
             if(req.getParameter("feedType") != null) {
