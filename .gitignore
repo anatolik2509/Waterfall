@@ -2,3 +2,4 @@
 /.idea/
 # Project exclude paths
 /target/
+.vscode
