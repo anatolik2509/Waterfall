@@ -2,8 +2,6 @@ package ru.itis.antonov.waterfall.models;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString
