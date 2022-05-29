@@ -1,0 +1,18 @@
+version: "3"
+services:
+  waterfall:
+    container_name: waterfall_server
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - "postgres:postgres"
+    env_file:
+      - ./.env
+  postgres:
+    container_name: postgres
+    image: postgres
+    expose:
+      - ${POSTGRES_PORT}
+    env_file:
+      - ./.env
