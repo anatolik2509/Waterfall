@@ -1,0 +1,37 @@
+# This is a basic workflow that is manually triggered
+
+name: pipelines_state_report
+
+on:
+  workflow_run:
+    workflows: [Docker]
+    types: completed
+    
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+    - name: Push notify
+      uses: appleboy/telegram-action@master
+      with:   
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Docker pipeline successfully completed
+            
+          Repository: ${{ github.repository }}
+  on-fail:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+    - name: Push notify
+      uses: appleboy/telegram-action@master
+      with:   
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Docker pipeline successfully completed
+            
+          Repository: ${{ github.repository }}
