@@ -45,7 +45,7 @@ spec:
                 configMapKeyRef:
                   key: WATERFALL_PORT
                   name: env
-          image: anatolik2509/waterfall
+          image: ghcr.io/anatolik2509/waterfall:master
           name: waterfall-server
           ports:
             - containerPort: 8080

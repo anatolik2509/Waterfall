@@ -2,7 +2,7 @@ version: "3"
 services:
   waterfall:
     container_name: waterfall_server
-    image: waterfall
+    image: ghcr.io/anatolik2509/waterfall:master
     ports:
       - "8080:8080"
     links:
