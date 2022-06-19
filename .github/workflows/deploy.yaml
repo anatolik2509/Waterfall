@@ -17,6 +17,6 @@ jobs:
     - name: deploy
       run: kubectl apply -f kompose
     - name: start grafana
-      run: ./grafana-starter.sh
+      run: sudo ./grafana-starter.sh
     - name: expose address
       run: minikube ip
