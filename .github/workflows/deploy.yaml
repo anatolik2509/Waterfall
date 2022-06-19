@@ -16,7 +16,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: deploy
       run: kubectl apply -f kompose
+    - name: make grafana executable
+      run: chmod a+x grafana-starter.sh
     - name: start grafana
-      run: sudo ./grafana-starter.sh
+      run: ./grafana-starter.sh
     - name: expose address
       run: minikube ip
