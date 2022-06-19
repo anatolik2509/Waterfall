@@ -1,0 +1,6 @@
+servers:
+  hosts:
+    websrv01:
+      ansible_host: 84.201.140.67
+      ansible_user: anatoly
+      ansible_become_user: root

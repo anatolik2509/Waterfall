@@ -1,0 +1,9 @@
+- name: Install GitHub Actions Runner
+  hosts: servers
+  become: 'True'
+  vars:
+    - github_account: 'anatolik2509'
+    - github_repo: 'Waterfall'
+    - runner_user: 'anatoly'
+  roles:
+    - role: monolithprojects.github_actions_runner

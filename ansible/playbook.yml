@@ -1,0 +1,28 @@
+- name: Install kubernetes stuff
+  hosts: servers
+  remote_user: root
+  vars:
+
+  tasks:
+    - name: Update repos
+      become: 'True'
+      apt:
+        upgrade: 'True'
+        update_cache: 'True'
+
+    - name: Check minikube
+      stat:
+        path: /usr/local/bin/minikube
+      register: minikube
+
+    - name: Install minikube
+      script: minikube-install.sh
+      when: not minikube.stat.exists
+
+    - name: Start minikube
+      command: minikube start
+      when: not minikube.stat.exists
+
+    - name: Test token
+      debug:
+        msg: "{{ PERSONAL_ACCESS_TOKEN }}"
